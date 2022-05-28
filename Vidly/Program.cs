@@ -19,6 +19,9 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+app.MapControllerRoute(
+    name: "MoviesByReleaseDate",
+    pattern: "{controller=Movies}/{action=ByReleaseDate}/{year}/{month}");
 
 app.MapControllerRoute(
     name: "default",
