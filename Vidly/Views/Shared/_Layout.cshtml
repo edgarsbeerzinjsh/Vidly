@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model Vidly.ViewModels.RandomMovieViewModel
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -9,8 +10,12 @@
     <link rel="stylesheet" href="~/Vidly.styles.css" asp-append-version="true" />
 </head>
 <body>
+@*    @Html.PartialAsync("_NavBar", Model.Movie)
+*@
+
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        @Html.Partial("_NavBar")
+        @*<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Vidly</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -25,11 +30,17 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Movies" asp-action="Random">Movie</a>
+                        </li>
+
                     </ul>
                 </div>
             </div>
         </nav>
+        *@
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

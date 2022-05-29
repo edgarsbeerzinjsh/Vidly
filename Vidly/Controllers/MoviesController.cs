@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Vidly.Models;
+using Vidly.ViewModels;
 
 namespace Vidly.Controllers
 {
@@ -12,7 +13,20 @@ namespace Vidly.Controllers
             {
                 Name = "Shrek! "
             };
-            return View(movie);
+            var customers = new List<Customer>
+            {
+                new Customer { Name = "Customer 1" },
+                new Customer { Name = "Customer 2" }
+            };
+            var viewModel = new RandomMovieViewModel
+            {
+                Movie = movie,
+                Customers = customers
+            };
+            return View(viewModel);
+            //ViewData["Movie"] = movie; <--- noteikti izvairities
+            //return View(movie);
+            //return View();
             //return new ViewResult();
             //return Content("Hello World!");
             //return new NotFoundResult();
@@ -24,7 +38,7 @@ namespace Vidly.Controllers
             return Content("id=" + id);
         }
         // movies
-        public IActionResult Index( int? pageIndex, string sortBy)
+        public IActionResult Index(int? pageIndex, string sortBy)
         {
             if (!pageIndex.HasValue)
             {
@@ -36,5 +50,11 @@ namespace Vidly.Controllers
             }
             return Content(String.Format("pageIndex={0}&sortBy{1}", pageIndex, sortBy));
         }
+        [Route("movies/released/{year}/{month:range(1,12):regex(\\d{{2}})}")]
+        public IActionResult ByReleaseDate(int? year, int? month)
+        {
+            return Content(year + "/" + month);
+        }
+
     }
 }

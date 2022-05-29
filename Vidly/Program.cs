@@ -19,12 +19,20 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-app.MapControllerRoute(
-    name: "MoviesByReleaseDate",
-    pattern: "{controller=Movies}/{action=ByReleaseDate}/{year}/{month}");
+//app.MapControllerRoute(
+//    name: "MoviesByReleaseDate",
+//    pattern: "{controller=Movies}/{action=ByReleaseDate}/{year}/{month}");
+
+//app.MapControllerRoute(
+//    name: "MoviesByReleaseDate",
+//    pattern: "Movies/Released/{year}/{month}",
+//    defaults: new { controller = "Movies", action = "ByReleaseDate"},
+//    new {year = @"2015|2016|2017", month = @"\d{2}"}); 
+
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+app.MapControllers();
 app.Run();
