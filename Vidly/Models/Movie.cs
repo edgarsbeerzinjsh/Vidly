@@ -1,4 +1,5 @@
-﻿namespace Vidly.Models
+﻿using System.Data.Entity;
+namespace Vidly.Models
 {
     public class Movie
     {
